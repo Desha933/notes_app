@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
-import 'package:notes_app/widgets/customappbarnotes.dart';
-import 'package:notes_app/widgets/custom_note_item.dart';
+import 'package:notes_app/widgets/customappbar.dart';
+import 'package:notes_app/widgets/customlistview.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(const NotesApp());
 }
 
-class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+class NotesApp extends StatelessWidget {
+  const NotesApp({super.key});
 
   // This widget is the root of your application.
   @override
@@ -23,8 +23,8 @@ class MyApp extends StatelessWidget {
               SizedBox(
                 height: 30,
               ),
-              CustomAppbarNote(),
-              CustomNoteItem()
+              CustomAppbar(),
+              CustomListView()
             ],
           ),
         ),
