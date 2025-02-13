@@ -8,20 +8,20 @@ class CustomAppbar extends StatelessWidget {
   Widget build(BuildContext context) {
     return Row(
       children: [
-        Text(
+        const Text(
           'Notes',
           style: TextStyle(
             fontSize: 28,
           ),
         ),
-        Spacer(),
+        const Spacer(),
         Container(
           width: 30,
           height: 30,
           decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(10),
               color: const Color.fromARGB(255, 90, 80, 80)),
-          child: Icon(
+          child: const Icon(
             Icons.search,
           ),
         )

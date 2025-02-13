@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:notes_app/widgets/customappbar.dart';
-import 'package:notes_app/widgets/customlistview.dart';
+import 'package:notes_app/views/notesview.dart';
 
 void main() {
   runApp(const NotesApp());
@@ -15,20 +14,7 @@ class NotesApp extends StatelessWidget {
     return MaterialApp(
       theme: ThemeData(brightness: Brightness.dark),
       debugShowCheckedModeBanner: false,
-      home: Scaffold(
-        body: Padding(
-          padding: const EdgeInsets.all(10),
-          child: Column(
-            children: [
-              SizedBox(
-                height: 30,
-              ),
-              CustomAppbar(),
-              CustomListView()
-            ],
-          ),
-        ),
-      ),
+      home: const NotesView(),
     );
   }
 }
