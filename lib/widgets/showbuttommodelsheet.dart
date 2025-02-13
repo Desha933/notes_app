@@ -14,7 +14,16 @@ class customButtomsheet extends StatelessWidget {
           SizedBox(
             height: 16,
           ),
-          CustomTextField(),
+          CustomTextField(
+            hint: 'title',
+          ),
+          SizedBox(
+            height: 16,
+          ),
+          CustomTextField(
+            hint: 'content',
+            maxlines: 5,
+          ),
         ],
       ),
     );
