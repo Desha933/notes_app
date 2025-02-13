@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-class AppBarNotes extends StatelessWidget {
-  const AppBarNotes({super.key});
+class CustomAppbarNote extends StatelessWidget {
+  const CustomAppbarNote({super.key});
 
   // This widget is the root of your application.
   @override

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:notes_app/widgets/appbar_notes.dart';
+import 'package:notes_app/widgets/customappbarnotes.dart';
+import 'package:notes_app/widgets/custom_note_item.dart';
 
 void main() {
   runApp(const MyApp());
@@ -22,7 +23,8 @@ class MyApp extends StatelessWidget {
               SizedBox(
                 height: 30,
               ),
-              AppBarNotes(),
+              CustomAppbarNote(),
+              CustomNoteItem()
             ],
           ),
         ),
