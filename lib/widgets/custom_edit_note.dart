@@ -8,7 +8,31 @@ class CustomEditNote extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return SingleChildScrollView(
+    return const SingleChildScrollView(
+      child: AddFormNote(),
+    );
+  }
+}
+
+class AddFormNote extends StatefulWidget {
+  const AddFormNote({
+    super.key,
+  });
+
+  @override
+  State<AddFormNote> createState() => _AddFormNoteState();
+}
+
+class _AddFormNoteState extends State<AddFormNote> {
+  final GlobalKey<FormState> formkey = GlobalKey();
+  AutovalidateMode autovalidatemode = AutovalidateMode.disabled;
+  String? title, subtitle;
+
+  @override
+  Widget build(BuildContext context) {
+    return Form(
+      key: formkey,
+      autovalidateMode: autovalidatemode,
       child: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
         child: Column(
