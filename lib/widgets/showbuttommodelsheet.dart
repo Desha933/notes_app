@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:notes_app/widgets/customButtom.dart';
-import 'package:notes_app/widgets/customtextfield.dart';
+import 'package:modal_progress_hud_nsn/modal_progress_hud_nsn.dart';
+import 'package:notes_app/cubits/add_notes_cubit/add_notes_cubit.dart';
+import 'package:notes_app/cubits/add_notes_cubit/add_notes_state.dart';
+import 'package:notes_app/widgets/addnote_bottomsheetform.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 class customButtomsheet extends StatelessWidget {
   const customButtomsheet({super.key});
@@ -11,58 +14,22 @@ class customButtomsheet extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.all(10),
       child: SingleChildScrollView(
-        child: ButtomSheetNote(),
-      ),
-    );
-  }
-}
-
-class ButtomSheetNote extends StatefulWidget {
-  const ButtomSheetNote({
-    super.key,
-  });
-
-  @override
-  State<ButtomSheetNote> createState() => _ButtomSheetNoteState();
-}
-
-class _ButtomSheetNoteState extends State<ButtomSheetNote> {
-  final GlobalKey<FormState> formkey = GlobalKey();
-  AutovalidateMode autovalidatormode = AutovalidateMode.disabled;
-  String? title, subtitle;
-  @override
-  Widget build(BuildContext context) {
-    return Form(
-      key: formkey,
-      child: Column(
-        children: [
-          SizedBox(height: 16),
-          CustomTextField(
-            hint: 'title',
-            onsaved: (value) {
-              title = value;
-            },
-          ),
-          SizedBox(height: 16),
-          CustomTextField(
-            hint: 'content',
-            minlines: 4,
-            onsaved: (value) {
-              subtitle = value;
-            },
-          ),
-          SizedBox(height: 150),
-          CustomButtom(
-            ontap: () {
-              if (formkey.currentState!.validate()) {
-                formkey.currentState!.save();
-              } else {
-                autovalidatormode = AutovalidateMode.always;
-                setState(() {});
-              }
-            },
-          ),
-        ],
+        child: BlocConsumer<AddNotesCubit, AddNotesState>(
+          listener: (context, state) {
+            if (state is AddNotesFailiar) {
+              print('failiar ${state.errormassage}');
+            }
+            if (state is AddNotesSccess) {
+              Navigator.pop(context);
+            }
+          },
+          builder: (context, state) {
+            return ModalProgressHUD(
+              inAsyncCall: state is AddNotesLoading ? true : false,
+              child: const ButtomSheetNote(),
+            );
+          },
+        ),
       ),
     );
   }
