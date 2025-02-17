@@ -9,7 +9,7 @@ class NotesCubit extends Cubit<NotesState> {
   NotesCubit() : super(NotesInitial());
   //generic T
 
-  addNote() async {
+  fetchNotes() async {
     emit(NotesLoading());
     try {
       var notesBox = Hive.box<NoteModel>(kNotesBox);
