@@ -13,24 +13,26 @@ class customButtomsheet extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocProvider(
       create: (context) => AddNotesCubit(),
-      child: Padding(
-        padding: const EdgeInsets.all(10),
-        child: BlocConsumer<AddNotesCubit, AddNotesState>(
-          listener: (context, state) {
-            if (state is AddNotesFailiar) {
-              print('failiar ${state.errormassage}');
-            }
-            if (state is AddNotesSccess) {
-              Navigator.pop(context);
-            }
-          },
-          builder: (context, state) {
-            return ModalProgressHUD(
-              inAsyncCall: state is AddNotesLoading ? true : false,
-              child: const SingleChildScrollView(child: ButtomSheetNote()),
-            );
-          },
-        ),
+      child: BlocConsumer<AddNotesCubit, NotesState>(
+        listener: (context, state) {
+          if (state is AddNotesFailiar) {
+            print('failiar ${state.errormassage}');
+          }
+          if (state is NotesSccess) {
+            Navigator.pop(context);
+          }
+        },
+        builder: (context, state) {
+          return AbsorbPointer(
+              absorbing: state is NotesLoading ? true : false,
+              child: Padding(
+                padding: EdgeInsets.only(
+                    left: 10,
+                    right: 10,
+                    bottom: MediaQuery.of(context).viewInsets.bottom),
+                child: const SingleChildScrollView(child: ButtomSheetNote()),
+              ));
+        },
       ),
     );
   }

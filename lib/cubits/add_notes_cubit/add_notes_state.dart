@@ -1,12 +1,12 @@
-abstract class AddNotesState {}
+abstract class NotesState {}
 
-class AddNotesInitial extends AddNotesState {}
+class NotesInitial extends NotesState {}
 
-class AddNotesLoading extends AddNotesState {}
+class NotesLoading extends NotesState {}
 
-class AddNotesSccess extends AddNotesState {}
+class NotesSccess extends NotesState {}
 
-class AddNotesFailiar extends AddNotesState {
+class AddNotesFailiar extends NotesState {
   final String errormassage;
 
   AddNotesFailiar(this.errormassage);
