@@ -11,9 +11,10 @@ class customButtomsheet extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.all(10),
-      child: SingleChildScrollView(
+    return BlocProvider(
+      create: (context) => AddNotesCubit(),
+      child: Padding(
+        padding: const EdgeInsets.all(10),
         child: BlocConsumer<AddNotesCubit, AddNotesState>(
           listener: (context, state) {
             if (state is AddNotesFailiar) {
@@ -26,7 +27,7 @@ class customButtomsheet extends StatelessWidget {
           builder: (context, state) {
             return ModalProgressHUD(
               inAsyncCall: state is AddNotesLoading ? true : false,
-              child: const ButtomSheetNote(),
+              child: const SingleChildScrollView(child: ButtomSheetNote()),
             );
           },
         ),
