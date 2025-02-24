@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:notes_app/views/notesview.dart';
 import 'package:notes_app/widgets/appbar.dart';
+import 'package:notes_app/widgets/floatingactionbuttom.dart';
 
 void main() {
   runApp(const MyApp());
@@ -16,15 +17,7 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       theme: ThemeData.dark(),
       home: Scaffold(
-        floatingActionButton: FloatingActionButton(
-          backgroundColor: Colors.green,
-          onPressed: () {},
-          child: Icon(
-            Icons.add,
-            weight: 24,
-            size: 28,
-          ),
-        ),
+        floatingActionButton: CustomFloatingActionButtom(),
         body: NotesView(),
       ),
     );
