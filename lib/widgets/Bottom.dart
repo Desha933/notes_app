@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 
 class CustomBottom extends StatelessWidget {
-  const CustomBottom({super.key});
-
+  const CustomBottom({super.key, required this.Operation});
+  final String Operation;
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
@@ -15,7 +15,7 @@ class CustomBottom extends StatelessWidget {
             color: Colors.green, borderRadius: BorderRadius.circular(10)),
         child: Center(
           child: Text(
-            'Add',
+            '$Operation',
             style: TextStyle(fontSize: 20),
           ),
         ),

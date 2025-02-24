@@ -28,7 +28,9 @@ class CustomBottomSheet extends StatelessWidget {
           SizedBox(
             height: 50,
           ),
-          CustomBottom(),
+          CustomBottom(
+            Operation: 'Add',
+          ),
         ],
       ),
     );
