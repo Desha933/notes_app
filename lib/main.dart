@@ -16,6 +16,15 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       theme: ThemeData.dark(),
       home: Scaffold(
+        floatingActionButton: FloatingActionButton(
+          backgroundColor: Colors.green,
+          onPressed: () {},
+          child: Icon(
+            Icons.add,
+            weight: 24,
+            size: 28,
+          ),
+        ),
         body: NotesView(),
       ),
     );
