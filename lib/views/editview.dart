@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:notes_app/widgets/Bottom.dart';
+import 'package:notes_app/widgets/appbar.dart';
 import 'package:notes_app/widgets/textfield.dart';
 
 class EditView extends StatelessWidget {
@@ -14,7 +15,10 @@ class EditView extends StatelessWidget {
         child: Column(
           children: [
             SizedBox(height: 50),
-            Text('If you need to edit this note'),
+            CustomAppBar(
+              icon: Icon(Icons.check),
+              titlepage: 'Edit Note',
+            ),
             SizedBox(height: 50),
             CustomTextField(hint: 'title'),
             SizedBox(height: 30),
