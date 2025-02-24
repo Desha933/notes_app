@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:notes_app/views/notesview.dart';
 import 'package:notes_app/widgets/appbar.dart';
 
 void main() {
@@ -15,17 +16,7 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       theme: ThemeData.dark(),
       home: Scaffold(
-        body: Padding(
-          padding: const EdgeInsets.all(10),
-          child: Column(
-            children: [
-              SizedBox(
-                height: 30,
-              ),
-              CustomAppBar(),
-            ],
-          ),
-        ),
+        body: NotesView(),
       ),
     );
   }
