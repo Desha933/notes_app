@@ -1,14 +1,16 @@
 import 'package:flutter/material.dart';
+import 'package:notes_app/models/notemodel.dart';
 import 'package:notes_app/views/notesview.dart';
 import 'package:notes_app/widgets/appbar.dart';
 import 'package:notes_app/widgets/floatingactionbuttom.dart';
+import 'package:hive_flutter/hive_flutter.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(const NotesApp());
 }
 
-class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+class NotesApp extends StatelessWidget {
+  const NotesApp({super.key});
 
   // This widget is the root of your application.
   @override
