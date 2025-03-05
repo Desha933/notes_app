@@ -1,13 +1,16 @@
 import 'package:flutter/material.dart';
 
 class CustomBottom extends StatelessWidget {
-  const CustomBottom({super.key, required this.Operation});
+  const CustomBottom(
+      {super.key, required this.Operation, @required this.ontap});
   final String Operation;
+  final void Function()? ontap;
+
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () {},
+      onTap: ontap,
       child: Container(
         width: double.infinity,
         height: 50,

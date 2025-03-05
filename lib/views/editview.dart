@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:notes_app/widgets/Bottom.dart';
 import 'package:notes_app/widgets/appbar.dart';
-import 'package:notes_app/widgets/textfield.dart';
+import 'package:notes_app/widgets/textformfield.dart';
 
 class EditView extends StatelessWidget {
   const EditView({super.key});
@@ -28,6 +28,9 @@ class EditView extends StatelessWidget {
             ),
             SizedBox(height: 100),
             CustomBottom(
+              ontap: () {
+                Navigator.of(context).pop();
+              },
               Operation: 'Edit',
             ),
           ],

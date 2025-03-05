@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:notes_app/widgets/Bottom.dart';
-import 'package:notes_app/widgets/textfield.dart';
+import 'package:notes_app/widgets/formbuttomsheet.dart';
+import 'package:notes_app/widgets/textformfield.dart';
 
 class CustomBottomSheet extends StatelessWidget {
   const CustomBottomSheet({super.key});
@@ -10,29 +11,7 @@ class CustomBottomSheet extends StatelessWidget {
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.all(10),
-      child: Column(
-        children: [
-          SizedBox(
-            height: 30,
-          ),
-          CustomTextField(
-            hint: 'title',
-          ),
-          SizedBox(
-            height: 20,
-          ),
-          CustomTextField(
-            hint: 'content',
-            minlines: 4,
-          ),
-          SizedBox(
-            height: 50,
-          ),
-          CustomBottom(
-            Operation: 'Add',
-          ),
-        ],
-      ),
+      child: FormButtomSheet(),
     );
   }
 }
