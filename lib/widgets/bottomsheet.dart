@@ -11,36 +11,39 @@ class CustomBottomSheet extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return BlocConsumer<AddNoteCubit, AddNoteState>(
-      listener: (context, state) {
-        if (state is AddNoteFailiar) {
-          ScaffoldMessenger.of(context).showSnackBar(
-            SnackBar(
-              content: Text('add note is failed'),
-              behavior: SnackBarBehavior.floating,
-              margin: EdgeInsets.symmetric(horizontal: 50, vertical: 10),
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(10),
+    return BlocProvider(
+      create: (context) => AddNoteCubit(),
+      child: BlocConsumer<AddNoteCubit, AddNoteState>(
+        listener: (context, state) {
+          if (state is AddNoteFailiar) {
+            ScaffoldMessenger.of(context).showSnackBar(
+              SnackBar(
+                content: Text('add note is failed'),
+                behavior: SnackBarBehavior.floating,
+                margin: EdgeInsets.symmetric(horizontal: 50, vertical: 10),
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(10),
+                ),
+              ),
+            );
+          }
+          if (state is AddNoteSuccess) {
+            Navigator.of(context).pop();
+          }
+        },
+        builder: (context, state) {
+          return Padding(
+            padding: const EdgeInsets.all(10),
+            child: ModalProgressHUD(
+              inAsyncCall: state is AddNoteLoading ? true : false,
+              child: Padding(
+                padding: const EdgeInsets.only(bottom: 30),
+                child: SingleChildScrollView(child: FormButtomSheet()),
               ),
             ),
           );
-        }
-        if (state is AddNoteSuccess) {
-          Navigator.of(context).pop();
-        }
-      },
-      builder: (context, state) {
-        return Padding(
-          padding: const EdgeInsets.all(10),
-          child: ModalProgressHUD(
-            inAsyncCall: state is AddNoteLoading ? true : false,
-            child: Padding(
-              padding: const EdgeInsets.only(bottom: 30),
-              child: FormButtomSheet(),
-            ),
-          ),
-        );
-      },
+        },
+      ),
     );
   }
 }
