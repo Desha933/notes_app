@@ -32,10 +32,10 @@ class CustomBottomSheet extends StatelessWidget {
           }
         },
         builder: (context, state) {
-          return Padding(
-            padding: const EdgeInsets.all(10),
-            child: ModalProgressHUD(
-              inAsyncCall: state is AddNoteLoading ? true : false,
+          return AbsorbPointer(
+            absorbing: state is AddNoteLoading ? true : false,
+            child: Padding(
+              padding: const EdgeInsets.all(10),
               child: Padding(
                 padding: const EdgeInsets.only(bottom: 30),
                 child: SingleChildScrollView(child: FormButtomSheet()),

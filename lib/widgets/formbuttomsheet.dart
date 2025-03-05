@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:notes_app/cubits/addnotecubit/addnotecubit.dart';
+import 'package:notes_app/cubits/addnotecubit/addnotestate.dart';
 import 'package:notes_app/models/notemodel.dart';
 import 'package:notes_app/widgets/Bottom.dart';
 import 'package:notes_app/widgets/textformfield.dart';
@@ -44,6 +45,7 @@ class _FormButtomSheetState extends State<FormButtomSheet> {
           ),
           SizedBox(height: 50),
           CustomBottom(
+            isloading: State is AddNoteLoading ? true : false,
             ontap: () {
               if (formKey.currentState!.validate()) {
                 formKey.currentState!.save();
