@@ -37,7 +37,8 @@ class CustomBottomSheet extends StatelessWidget {
             child: Padding(
               padding: const EdgeInsets.all(10),
               child: Padding(
-                padding: const EdgeInsets.only(bottom: 30),
+                padding: EdgeInsets.only(
+                    bottom: MediaQuery.of(context).viewInsets.bottom),
                 child: SingleChildScrollView(child: FormButtomSheet()),
               ),
             ),
