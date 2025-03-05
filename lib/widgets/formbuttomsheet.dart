@@ -22,37 +22,39 @@ class _FormButtomSheetState extends State<FormButtomSheet> {
     return Form(
       key: formKey,
       autovalidateMode: autovalidateMode,
-      child: Column(
-        children: [
-          SizedBox(height: 30),
-          CustomTextField(
-            onsaved: (data) {
-              title = data;
-            },
-            hint: 'title',
-          ),
-          SizedBox(height: 20),
-          CustomTextField(
-            onsaved: (data) {
-              subtitle = data;
-            },
-            hint: 'content',
-            minlines: 4,
-          ),
-          SizedBox(height: 50),
-          CustomBottom(
-            ontap: () {
-              if (formKey.currentState!.validate()) {
-                formKey.currentState!.save();
-                setState(() {});
-              } else {
-                autovalidateMode = AutovalidateMode.always;
-                setState(() {});
-              }
-            },
-            Operation: 'Add',
-          ),
-        ],
+      child: SingleChildScrollView(
+        child: Column(
+          children: [
+            SizedBox(height: 30),
+            CustomTextField(
+              onsaved: (data) {
+                title = data;
+              },
+              hint: 'title',
+            ),
+            SizedBox(height: 20),
+            CustomTextField(
+              onsaved: (data) {
+                subtitle = data;
+              },
+              hint: 'content',
+              minlines: 4,
+            ),
+            SizedBox(height: 50),
+            CustomBottom(
+              ontap: () {
+                if (formKey.currentState!.validate()) {
+                  formKey.currentState!.save();
+                  setState(() {});
+                } else {
+                  autovalidateMode = AutovalidateMode.always;
+                  setState(() {});
+                }
+              },
+              Operation: 'Add',
+            ),
+          ],
+        ),
       ),
     );
   }

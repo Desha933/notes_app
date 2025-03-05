@@ -3,9 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:modal_progress_hud_nsn/modal_progress_hud_nsn.dart';
 import 'package:notes_app/cubits/addnotecubit/addnotecubit.dart';
 import 'package:notes_app/cubits/addnotecubit/addnotestate.dart';
-import 'package:notes_app/widgets/Bottom.dart';
 import 'package:notes_app/widgets/formbuttomsheet.dart';
-import 'package:notes_app/widgets/textformfield.dart';
 
 class CustomBottomSheet extends StatelessWidget {
   const CustomBottomSheet({super.key});
@@ -28,15 +26,16 @@ class CustomBottomSheet extends StatelessWidget {
           );
         }
         if (state is AddNoteSuccess) {
-          Navigator.pop(context);
+          Navigator.of(context).pop();
         }
       },
       builder: (context, state) {
         return Padding(
           padding: const EdgeInsets.all(10),
-          child: SingleChildScrollView(
-            child: ModalProgressHUD(
-              inAsyncCall: state is AddNoteLoading ? true : false,
+          child: ModalProgressHUD(
+            inAsyncCall: state is AddNoteLoading ? true : false,
+            child: Padding(
+              padding: const EdgeInsets.only(bottom: 30),
               child: FormButtomSheet(),
             ),
           ),
