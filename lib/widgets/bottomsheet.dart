@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:modal_progress_hud_nsn/modal_progress_hud_nsn.dart';
 import 'package:notes_app/cubits/addnotecubit/addnotecubit.dart';
 import 'package:notes_app/cubits/addnotecubit/addnotestate.dart';
+import 'package:notes_app/cubits/notecubit/notecubit.dart';
 import 'package:notes_app/widgets/formbuttomsheet.dart';
 
 class CustomBottomSheet extends StatelessWidget {
@@ -15,27 +16,17 @@ class CustomBottomSheet extends StatelessWidget {
       create: (context) => AddNoteCubit(),
       child: BlocConsumer<AddNoteCubit, AddNoteState>(
         listener: (context, state) {
-          if (state is AddNoteFailiar) {
-            ScaffoldMessenger.of(context).showSnackBar(
-              SnackBar(
-                content: Text('add note is failed'),
-                behavior: SnackBarBehavior.floating,
-                margin: EdgeInsets.symmetric(horizontal: 50, vertical: 10),
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(10),
-                ),
-              ),
-            );
-          }
+          if (state is AddNoteFailiar) {}
           if (state is AddNoteSuccess) {
-            Navigator.of(context).pop();
+            BlocProvider.of<NoteCubit>(context).fetchnote();
+            Navigator.pop(context);
           }
         },
         builder: (context, state) {
           return AbsorbPointer(
             absorbing: state is AddNoteLoading ? true : false,
             child: Padding(
-              padding: const EdgeInsets.all(10),
+              padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 20),
               child: Padding(
                 padding: EdgeInsets.only(
                     bottom: MediaQuery.of(context).viewInsets.bottom),
