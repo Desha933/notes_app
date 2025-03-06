@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:notes_app/constant.dart';
 import 'package:notes_app/cubits/notecubit/notecubit.dart';
 import 'package:notes_app/models/notemodel.dart';
 import 'package:notes_app/views/editview.dart';
@@ -27,8 +28,16 @@ class CustomNoteItem extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.end,
             children: [
               ListTile(
-                title: Text(note.title),
-                subtitle: Text(note.subtitle),
+                title: Text(
+                  note.title,
+                  style: TextStyle(fontSize: 20, fontFamily: kPoppinsfont),
+                ),
+                subtitle: Text(
+                  note.subtitle,
+                  style: TextStyle(
+                    fontSize: 16,
+                  ),
+                ),
                 trailing: IconButton(
                     onPressed: () {
                       note.delete();

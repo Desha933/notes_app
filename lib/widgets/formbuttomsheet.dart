@@ -56,13 +56,13 @@ class _FormButtomSheetState extends State<FormButtomSheet> {
                     title: title!,
                     subtitle: subtitle!,
                     date: formateddata,
-                    color: Colors.red.value);
+                    color: Colors.green.value);
                 BlocProvider.of<AddNoteCubit>(context).addnote(note);
 
-                setState(() {});
+                // setState(() {});
               } else {
                 autovalidateMode = AutovalidateMode.always;
-                setState(() {});
+                // setState(() {});
               }
             },
             Operation: 'Add',

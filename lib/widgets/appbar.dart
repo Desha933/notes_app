@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:notes_app/constant.dart';
 
 class CustomAppBar extends StatelessWidget {
   const CustomAppBar({super.key, required this.icon, required this.titlepage});
@@ -11,7 +12,7 @@ class CustomAppBar extends StatelessWidget {
       children: [
         Text(
           '$titlepage',
-          style: TextStyle(fontSize: 24),
+          style: TextStyle(fontSize: 28, fontFamily: kPacificofont),
         ),
         Spacer(),
         Container(
