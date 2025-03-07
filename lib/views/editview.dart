@@ -1,39 +1,24 @@
 import 'package:flutter/material.dart';
-import 'package:notes_app/widgets/Bottom.dart';
-import 'package:notes_app/widgets/appbar.dart';
-import 'package:notes_app/widgets/textformfield.dart';
+import 'package:notes_app/models/notemodel.dart';
+import 'package:notes_app/widgets/editnotebody.dart';
 
-class EditView extends StatelessWidget {
-  const EditView({super.key});
+class EditView extends StatefulWidget {
+  const EditView({super.key, required this.note});
+  final NoteModel note;
 
+  @override
+  State<EditView> createState() => _EditViewState();
+}
+
+class _EditViewState extends State<EditView> {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: Padding(
         padding: const EdgeInsets.all(10),
-        child: Column(
-          children: [
-            SizedBox(height: 50),
-            CustomAppBar(
-              icon: Icon(Icons.check),
-              titlepage: 'Edit Note',
-            ),
-            SizedBox(height: 50),
-            CustomTextField(hint: 'title'),
-            SizedBox(height: 30),
-            CustomTextField(
-              hint: 'Content',
-              minlines: 4,
-            ),
-            SizedBox(height: 100),
-            CustomBottom(
-              ontap: () {
-                Navigator.of(context).pop();
-              },
-              Operation: 'Edit',
-            ),
-          ],
+        child: CustomEditNoteBody(
+          note: widget.note,
         ),
       ),
     );

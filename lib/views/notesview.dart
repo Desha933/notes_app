@@ -21,7 +21,8 @@ class _NotesViewState extends State<NotesView> {
             height: 30,
           ),
           CustomAppBar(
-            icon: Icon(Icons.search),
+            icon: IconButton(
+                iconSize: 30, onPressed: () {}, icon: Icon(Icons.search)),
             titlepage: 'Notes',
           ),
           CustomNotesListView(),
