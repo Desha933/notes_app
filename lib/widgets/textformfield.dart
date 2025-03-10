@@ -6,9 +6,11 @@ class CustomTextField extends StatelessWidget {
       required this.hint,
       this.minlines = 1,
       this.onsaved,
-      this.onchanged});
+      this.onchanged,
+      @required this.color});
   final String hint;
   final int minlines;
+  final Color? color;
   final void Function(String?)? onsaved;
   final void Function(String?)? onchanged;
   // This widget is the root of your application.
@@ -28,6 +30,8 @@ class CustomTextField extends StatelessWidget {
       maxLines: 9,
       cursorColor: Colors.green,
       decoration: InputDecoration(
+        filled: true,
+        fillColor: color,
         hintText: hint,
         border: OutlineInputBorder(
           borderRadius: BorderRadius.circular(10),

@@ -5,6 +5,7 @@ import 'package:notes_app/cubits/addnotecubit/addnotecubit.dart';
 import 'package:notes_app/cubits/addnotecubit/addnotestate.dart';
 import 'package:notes_app/models/notemodel.dart';
 import 'package:notes_app/widgets/Bottom.dart';
+import 'package:notes_app/widgets/colorlistview.dart';
 import 'package:notes_app/widgets/textformfield.dart';
 
 class FormButtomSheet extends StatefulWidget {
@@ -44,7 +45,7 @@ class _FormButtomSheetState extends State<FormButtomSheet> {
             hint: 'content',
             minlines: 4,
           ),
-          SizedBox(height: 50),
+          CustomColorListview(),
           CustomBottom(
             isloading: State is AddNoteLoading ? true : false,
             ontap: () {
