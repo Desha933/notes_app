@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:notes_app/models/custom_search_delegate.dart';
 import 'package:notes_app/widgets/appbar.dart';
 import 'package:notes_app/widgets/noteslistview.dart';
 
@@ -22,7 +23,12 @@ class _NotesViewState extends State<NotesView> {
           ),
           CustomAppBar(
             icon: IconButton(
-                iconSize: 30, onPressed: () {}, icon: Icon(Icons.search)),
+                iconSize: 30,
+                onPressed: () async {
+                  await showSearch(
+                      context: context, delegate: CustomSearchDelegate());
+                },
+                icon: Icon(Icons.search)),
             titlepage: 'Notes',
           ),
           CustomNotesListView(),
